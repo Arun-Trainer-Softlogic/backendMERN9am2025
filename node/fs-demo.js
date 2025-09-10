@@ -1,6 +1,23 @@
-import fs from "fs";
+import fs from 'fs'
+
+// fs.writeFileSync("notes.txt", "this is the node example for fs")
 
 
 
-fs.writeFileSync("ar.pdf" , "This is my first line in this line");
-fs.appendFileSync("ar.txt" , "\nThis is my second line in this line");
+// fs.appendFileSync("notes.txt", "\nAdding a new Line....")
+
+
+// const data = fs.readFileSync("notes.txt" , "utf-8")
+// console.log("file Content Is : \n", data );
+
+ fs.renameSync("notes.txt", "mynotes.txt");
+
+
+
+
+// fs.unlinkSync("mynotes.txt");
+
+
+
+
+console.log("All files ran");
