@@ -19,12 +19,12 @@
 
 
 
-// fetch('https://api.github.com/users/arun-cloud-dev')
+// fetch('http://localhost:3000/')
 
 // .then(response  =>  response.json())
 // .then ( data => {
 //     // console.log(data);
-//     console.log(data.login);
+//     console.log(data);
 // })
 
 

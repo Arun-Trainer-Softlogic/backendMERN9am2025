@@ -6,8 +6,7 @@ import http from 'http';
 // req => request  (what client sends )
 //res => response (what server sends back )
 
-
-const server =http.createServer((req, res)=> {
+const server = http.createServer((req, res)=> {
     res.writeHead(200, {"content-type": "text/plain"})
 
 
