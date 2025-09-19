@@ -33,10 +33,18 @@ export default function Profile() {
       <img src={user.avatar_url} alt={user.login} />
       <div>
         <h3>{user.name || user.login}</h3>
+
         <p className="small-muted">@{user.login}</p>
+
         <p>{user.bio || <span className="small-muted">No bio</span>}</p>
+
         <p><strong>Followers:</strong> {user.followers} &nbsp; <strong>Repos:</strong> {user.public_repos}</p>
+
+        
         <p><strong>Location:</strong> {user.location || "—"}</p>
+
+
+
         <p><a href={user.html_url} target="_blank" rel="noreferrer">View on GitHub</a></p>
       </div>
     </div>
