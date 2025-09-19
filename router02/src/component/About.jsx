@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
 
-function About() {
+export default function About() {
   return (
-    <div>About</div>
-  )
+    <div>
+      <h1>About</h1>
+      <p>Simple demo app to demonstrate dynamic routing with <code>useParams()</code>.</p>
+    </div>
+  );
 }
-
-export default About

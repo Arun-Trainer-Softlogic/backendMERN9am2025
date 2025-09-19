@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
 
-function Home() {
+export default function Home() {
   return (
-    <div>Home</div>
-  )
+    <div>
+      <h1>Welcome</h1>
+      <p>This demo shows 3 GitHub follower profiles using <code>useParams()</code> and React Router nested routes.</p>
+    </div>
+  );
 }
-
-export default Home

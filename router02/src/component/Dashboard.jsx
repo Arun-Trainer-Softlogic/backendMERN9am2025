@@ -1,26 +1,56 @@
-import React from 'react'
-import {Link} from "react-router-dom"
-import { Outlet } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 
-function Dashboard() {
+export default function Dashboard() {
+  const [followers, setFollowers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+
+    fetch("https://api.github.com/users/arun-cloud-dev/followers")
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        // keep the first 3 followers
+        setFollowers(Array.isArray(data) ? data.slice(0, 3) : []);
+      })
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <div>
-        <h1>dashboard</h1>
-        <p>Lorem ipsum dolor sit.</p>
+      <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+        <h2>Dashboard</h2>
+        <div className="small-muted">Fetched from GitHub</div>
+      </div>
 
+      <nav className="dashboard-nav">
+        {loading && <span>Loading followers…</span>}
+        {error && <span style={{color:"crimson"}}>Error: {error}</span>}
+        {!loading && !error && followers.length === 0 && <span>No followers found</span>}
 
-        <nav>
-            <Link to="profile">Profile</Link>
-            <Link to="settings">Settings</Link>
+        {!loading && !error && followers.map((f) => (
+          <Link
+            key={f.id}
+            to={`profile/${f.login}`}   // relative link -> /dashboard/profile/:login
+            className="follower-link"
+          >
+            <img src={f.avatar_url} alt={f.login} width="36" style={{ borderRadius: 8 }} />
+            <span>{f.login}</span>
+          </Link>
+        ))}
 
-        </nav>
+        <Link to="settings" className="follower-link">Settings</Link>
+      </nav>
 
-
-     <Outlet/>
-
-
+      {/* nested route outlet; Profile or DashboardHome will render here */}
+      <Outlet />
     </div>
-  )
+  );
 }
-
-export default Dashboard
