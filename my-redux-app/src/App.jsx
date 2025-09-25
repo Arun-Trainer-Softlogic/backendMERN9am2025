@@ -1,4 +1,4 @@
-
+import React from "react";
 import Counter from "./features/counter/Counter";
 import TodoList from "./features/todo/TodoList";
 
@@ -9,8 +9,7 @@ function App() {
       <Counter />
       <TodoList />
     </div>
-  )
-
+  );
 }
 
 export default App;
