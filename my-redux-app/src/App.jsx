@@ -1,6 +1,6 @@
-import React from "react";
+
 import Counter from "./features/counter/Counter";
-import TodoList from "./features/todo/TodoList";
+import TodoList from "./features/todolist/Todolist";
 
 function App() {
   return (
